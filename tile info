@@ -1,0 +1,63 @@
+check each row for connected sprites that are the same
+increase skip, increase tile count
+
+266 REAL tiles -> 103 REAL tiles!!!
+
+if it is not air, check the next tile to see if it is the same.
+if it is the same, check the next tile.
+
+tile.jumpPad(xPOS, height-y*h-h/2, w, h, height-y*h-h*0.87)
+
+var c = createSprite(xPOS, height-y*h-h/2, w, h);
+c.shapeColor = color(210, 50, 50);
+var d = createSprite(xPOS, height-y*h-h*0.87, w, h/4);
+d.shapeColor = color(255);
+collideG.add(c);
+allsprites.add(c);
+allsprites.add(d);
+
+// player notice conditions:
+
+- "Noise"
+- distance
+- sprint on / off
+- stealth on / off
+- level day / night
+- line of sight
+
+
+// enemy types;
+
+Nimble:
+ - Always sprints (slightly slower than player's (if good AI))
+ - 2 intelligence
+ - lower damage
+
+ Normal:
+ - Might sprint?
+ - 3 intelligence
+ - normal damage
+
+ Brute:
+ - Doesn't sprint
+ - 1 int
+ - higher damage
+
+
+Enemy pathfinding methods:
+so the enemy can ALWAYS know where the player is, and is always prepared to move to the Player
+but the enemy will only move to the player when the player has been noticed by the specific enemy
+
+the enemy can be prepared by just doing the subtractions from both player and enemy positions
+on the x and y axis
+
+pros: easy
+cons: can't go around obstacles
+
+ai is HARD they cant actually expect us to do that??
+
+https://qiao.github.io/PathFinding.js/visual/ -> trace -> chebyshev
+
+make fake obstacles for only the enemy to collide with to make the enemy run up the wall
+if there is a gap of more than a few blocks in front of it, always jump
+it should favour taking the highest possible route
